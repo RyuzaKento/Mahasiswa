@@ -41,7 +41,7 @@ public class Home extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(235, 227, 213));
-        jPanel1.setPreferredSize(new java.awt.Dimension(802, 475));
+        jPanel1.setPreferredSize(new java.awt.Dimension(802, 477));
 
         jPanel2.setBackground(new java.awt.Color(119, 107, 93));
 
@@ -77,11 +77,11 @@ public class Home extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addGap(16, 16, 16)
                 .addComponent(jLabel9)
                 .addGap(278, 278, 278)
                 .addComponent(Header)
-                .addContainerGap(332, Short.MAX_VALUE))
+                .addContainerGap(333, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,14 +90,14 @@ public class Home extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
+                        .addGap(10, 10, 10)
                         .addComponent(Header)))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
         jTextPane1.setEditable(false);
         jTextPane1.setBackground(new java.awt.Color(235, 227, 213));
-        jTextPane1.setText("Selamat datang di website resmi Universitas PBO! Website ini adalah pusat informasi terkini untuk semua yang berkaitan  dengan Program Studi  Pendidikan Bahasa dan Sastra Indonesia. Di sini, Anda dapat menemukan informasi mengenai  program-program akademis yang ditawarkan,  fasilitas kampus, kegiatan mahasiswa, dan berita terbaru seputar kegiatan  universitas.  Website ini juga menyediakan portal khusus untuk calon mahasiswa dan mahasiswa yang memungkinkan  mereka untuk mendaftar ataupun  melihat data mahasiswa. Selain itu, terdapat pula bagian berita dan pengumuman yang  memberikan wawasan terbaru mengenai  perkembangan terkini di lingkungan kampus. Kami berkomitmen untuk  memberikan pengalaman online yang informatif dan interaktif kepada pengunjung website kami. Jika Anda memiliki   pertanyaan lebih lanjut atau ingin mengenal lebih jauh tentang Universitas PBO, jangan ragu untuk menghubungi kami  melalui informasi  kontak yang tersedia.  Selamat menjelajahi dunia pendidikan dan budaya di Universitas PBO melalui website  kami!");
+        jTextPane1.setText("Selamat datang di website resmi Universitas PBO!  Website ini menyediakan portal khusus untuk calon mahasiswa dan mahasiswa yang memungkinkan  mereka untuk mendaftar ataupun  melihat data mahasiswa. ");
         jTextPane1.setSelectionColor(new java.awt.Color(235, 227, 213));
         jScrollPane2.setViewportView(jTextPane1);
 
@@ -120,7 +120,7 @@ public class Home extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(131, 131, 131)
@@ -142,8 +142,8 @@ public class Home extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Mendaftar, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
                     .addComponent(Daftar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 243, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
