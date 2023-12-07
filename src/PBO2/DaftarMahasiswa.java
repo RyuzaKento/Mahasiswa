@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane; 
 /**
  *
  * @author YPAB-LAB-RPL-COM19
@@ -143,6 +144,16 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
             }
         ));
         jScrollPane2.setViewportView(Konten);
+        if (Konten.getColumnModel().getColumnCount() > 0) {
+            Konten.getColumnModel().getColumn(0).setHeaderValue("Nama");
+            Konten.getColumnModel().getColumn(1).setHeaderValue("NIM");
+            Konten.getColumnModel().getColumn(2).setHeaderValue("Program Studi");
+            Konten.getColumnModel().getColumn(3).setHeaderValue("Email");
+            Konten.getColumnModel().getColumn(4).setHeaderValue("Password");
+            Konten.getColumnModel().getColumn(5).setHeaderValue("Jenis Kelamin");
+            Konten.getColumnModel().getColumn(6).setHeaderValue("Tanggal Lahir");
+            Konten.getColumnModel().getColumn(7).setHeaderValue("Alamat");
+        }
 
         Kembali.setText("Kembali");
         Kembali.addActionListener(new java.awt.event.ActionListener() {

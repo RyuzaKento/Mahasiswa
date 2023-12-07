@@ -401,9 +401,11 @@ Connection con;
         String jk2= jk.getText();
         String ttl2= ttl.getText();
         String alamat2= alamat.getText();
+        String database= DBase.getText();
+        
         try{
             con = con();
-            PreparedStatement pst = con.prepareStatement(String.format("DELETE FROM Pendaftaran WHERE Nama ('%s')", nama));
+            PreparedStatement pst = con.prepareStatement(String.format("DELETE FROM Pendaftaran WHERE Nama ('%s')", database));
             ResultSet rst = pst.executeQuery();
         } catch (ClassNotFoundException ex) {
         } catch (SQLException ex) {
@@ -437,9 +439,10 @@ Connection con;
         String jk2= jk.getText();
         String ttl2= ttl.getText();
         String alamat2= alamat.getText();
+         String database= DBase.getText();
         try{
             con = con();
-            PreparedStatement pst = con.prepareStatement(String.format("UPDATE Pendaftaran SET  Nama = '%s', Program_Studi = '%s', Email = '%s', Password = '%s', Jenis_Kelamin = '%s', Tanggal_Lahir = '%s', Alamat = '%s' WHERE Nama = '%s' ",  jurusan2, email2, pass2, jk2, ttl2, alamat2));
+            PreparedStatement pst = con.prepareStatement(String.format("UPDATE Pendaftaran SET  Nama = '%s', Program_Studi = '%s', Email = '%s', Password = '%s', Jenis_Kelamin = '%s', Tanggal_Lahir = '%s', Alamat = '%s' WHERE Nama = '%s' ",  nama2, jurusan2, email2, pass2, jk2, ttl2, alamat2, database));
             ResultSet rst = pst.executeQuery();
         } catch (ClassNotFoundException ex) {
         } catch (SQLException ex) {
