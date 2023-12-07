@@ -480,7 +480,7 @@ Connection con;
                 String alamatDB = rst.getString("Alamat");
                 
                 if(namaDB.equals(database)){
-                    outputFind.setText(namaDB + "/" + jurusanDB + "/" + emailDB + "/" + passwordDB + "/" + jeniskelaminDB + "/" + tanggallahirDB + "/" + alamatDB);
+                    outputFind.setText(namaDB + "-" + jurusanDB + "-" + emailDB + "-" + passwordDB + "-" + jeniskelaminDB + "-" + tanggallahirDB + "-" + alamatDB);
                     break;
                 } else {
                     outputFind.setText("Failed to Find Data!");
