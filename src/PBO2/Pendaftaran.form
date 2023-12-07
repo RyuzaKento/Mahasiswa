@@ -228,7 +228,7 @@
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="DBase" min="-2" pref="216" max="-2" attributes="0"/>
                                   <Group type="102" attributes="0">
-                                      <Component id="Delete1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="Select" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                       <Component id="Delete" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
@@ -293,7 +293,7 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="Update" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="Delete" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Delete1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="Select" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="outputFind" min="-2" max="-2" attributes="0"/>
@@ -406,12 +406,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DBaseActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="Delete1">
+            <Component class="javax.swing.JButton" name="Select">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Select"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Delete1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SelectActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="outputFind">

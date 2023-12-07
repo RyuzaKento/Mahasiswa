@@ -70,7 +70,7 @@ public class Pendaftaran extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         DBase = new javax.swing.JTextField();
-        Delete1 = new javax.swing.JButton();
+        Select = new javax.swing.JButton();
         outputFind = new javax.swing.JLabel();
         Kembali = new javax.swing.JButton();
 
@@ -215,10 +215,10 @@ public class Pendaftaran extends javax.swing.JFrame {
             }
         });
 
-        Delete1.setText("Select");
-        Delete1.addActionListener(new java.awt.event.ActionListener() {
+        Select.setText("Select");
+        Select.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Delete1ActionPerformed(evt);
+                SelectActionPerformed(evt);
             }
         });
 
@@ -259,7 +259,7 @@ public class Pendaftaran extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(DBase, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(Delete1)
+                                .addComponent(Select)
                                 .addGap(0, 0, 0)
                                 .addComponent(Delete)
                                 .addGap(0, 0, 0)
@@ -310,7 +310,7 @@ public class Pendaftaran extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Update)
                     .addComponent(Delete)
-                    .addComponent(Delete1))
+                    .addComponent(Select))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(outputFind)
                 .addContainerGap(14, Short.MAX_VALUE))
@@ -393,7 +393,7 @@ public class Pendaftaran extends javax.swing.JFrame {
     }//GEN-LAST:event_ttlActionPerformed
 
     private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
-Connection con;
+        Connection con;
         String nama2 = nama.getText();
         String jurusan2= jurusan.getText();
         String email2= email.getText();
@@ -405,7 +405,7 @@ Connection con;
         
         try{
             con = con();
-            PreparedStatement pst = con.prepareStatement(String.format("DELETE FROM Pendaftaran WHERE Nama ('%s')", database));
+            PreparedStatement pst = con.prepareStatement(String.format("DELETE FROM Pendaftaran WHERE Nama ='%s'", database));
             ResultSet rst = pst.executeQuery();
         } catch (ClassNotFoundException ex) {
         } catch (SQLException ex) {
@@ -431,7 +431,7 @@ Connection con;
     }//GEN-LAST:event_SubmitActionPerformed
 
     private void UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateActionPerformed
-Connection con;
+        Connection con;
         String nama2 = nama.getText();
         String jurusan2= jurusan.getText();
         String email2= email.getText();
@@ -455,7 +455,7 @@ Connection con;
         dispose();
     }//GEN-LAST:event_KembaliActionPerformed
 
-    private void Delete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Delete1ActionPerformed
+    private void SelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectActionPerformed
         // TODO add your handling code here:
         Connection con;
         String nama2 = nama.getText();
@@ -490,7 +490,7 @@ Connection con;
         } catch (SQLException ex) {
         }          // TODO add your
         
-    }//GEN-LAST:event_Delete1ActionPerformed
+    }//GEN-LAST:event_SelectActionPerformed
 
     private void DBaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DBaseActionPerformed
         // TODO add your handling code here:
@@ -551,10 +551,10 @@ Connection con;
     private javax.swing.JLabel CR;
     private javax.swing.JTextField DBase;
     private javax.swing.JButton Delete;
-    private javax.swing.JButton Delete1;
     private javax.swing.JLabel Header;
     private javax.swing.JButton Kembali;
     private javax.swing.JLabel MainHead;
+    private javax.swing.JButton Select;
     private javax.swing.JButton Submit;
     private javax.swing.JButton Update;
     private javax.swing.JTextField alamat;
