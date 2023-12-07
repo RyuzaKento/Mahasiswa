@@ -3,7 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package PBO2;
-
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.PreparedStatement;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author YPAB-LAB-RPL-COM19
@@ -13,9 +20,36 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
     /**
      * Creates new form Home
      */
+    public static Connection con() throws ClassNotFoundException, SQLException{
+        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        String mysqlURL = "jdbc:sqlserver://localhost\\Pendaftaran:1433;databaseName=Mahasiswa;TrustServiceCertificate=true;Encrypt=false;";
+        Connection con = DriverManager.getConnection(mysqlURL, "Yami", "1234");
+        return con;
+    }
     public DaftarMahasiswa() {
         initComponents();
+        Connection con;
+        DefaultTableModel model = (DefaultTableModel)Konten.getModel();
+        try{
+            con = con();
+            PreparedStatement pst = con.prepareStatement(String.format("SELECT * FROM Pendaftaran"));
+            ResultSet rst = pst.executeQuery();
+            while(rst.next()){
+                model.addRow(new Object[]{
+                    rst.getString("Nama"),
+                    rst.getString("Jurusan"),
+                    rst.getString("Email"),
+                    rst.getString("Password"),
+                    rst.getString("JenisKelamin"),
+                    rst.getString("TanggalLahir"),
+                    rst.getString("Alamat")
+                });
+            }
+        } catch (ClassNotFoundException ex) {
+        } catch (SQLException ex) {
+        }
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,13 +69,12 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         MainHead = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        Konten = new javax.swing.JTable();
+        Kembali = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(235, 227, 213));
-        jPanel1.setPreferredSize(new java.awt.Dimension(802, 477));
 
         jPanel2.setBackground(new java.awt.Color(119, 107, 93));
 
@@ -98,7 +131,7 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
         MainHead.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         MainHead.setText("Daftar Mahasiswa");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        Konten.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -109,12 +142,12 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
                 "Nama", "NIM", "Program Studi", "Email", "Password", "Jenis Kelamin", "Tanggal Lahir", "Alamat"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(Konten);
 
-        jButton1.setText("Kembali");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Kembali.setText("Kembali");
+        Kembali.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                KembaliActionPerformed(evt);
             }
         });
 
@@ -134,20 +167,20 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(Kembali)
                 .addGap(360, 360, 360))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
+                .addGap(18, 18, 18)
                 .addComponent(MainHead)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(Kembali)
                 .addGap(11, 11, 11)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 196, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -155,19 +188,21 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-dispose();        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void KembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KembaliActionPerformed
+      // TODO add your handling code here:
+    new Pendaftaran().setVisible(true); 
+    dispose();
+    }//GEN-LAST:event_KembaliActionPerformed
 
     /**
      * @param args the command line arguments
@@ -214,14 +249,14 @@ dispose();        // TODO add your handling code here:
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CR;
     private javax.swing.JLabel Header;
+    private javax.swing.JButton Kembali;
+    private javax.swing.JTable Konten;
     private javax.swing.JLabel MainHead;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 }

@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.util.logging.Logger;
 import java.util.logging.Level;
 import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -65,7 +67,12 @@ public class Pendaftaran extends javax.swing.JFrame {
         Update = new javax.swing.JButton();
         Submit = new javax.swing.JButton();
         alamat = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        DBase = new javax.swing.JTextField();
+        Delete1 = new javax.swing.JButton();
+        outputFind = new javax.swing.JLabel();
+        Kembali = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -200,6 +207,23 @@ public class Pendaftaran extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setText("Database:");
+
+        DBase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DBaseActionPerformed(evt);
+            }
+        });
+
+        Delete1.setText("Select");
+        Delete1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Delete1ActionPerformed(evt);
+            }
+        });
+
+        outputFind.setText("Searching...");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -213,18 +237,16 @@ public class Pendaftaran extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(jLabel4)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel8))
-                .addGap(64, 64, 64)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel3)
+                    .addComponent(outputFind))
+                .addGap(36, 36, 36)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(Delete)
-                        .addGap(0, 0, 0)
-                        .addComponent(Update)
-                        .addGap(0, 0, 0)
-                        .addComponent(Submit)
-                        .addGap(0, 34, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(Submit))
                             .addComponent(alamat, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(pass, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jk, javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,7 +254,18 @@ public class Pendaftaran extends javax.swing.JFrame {
                             .addComponent(jurusan)
                             .addComponent(email)
                             .addComponent(nama))
-                        .addGap(47, 47, 47))))
+                        .addGap(47, 47, 47))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(DBase, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(Delete1)
+                                .addGap(0, 0, 0)
+                                .addComponent(Delete)
+                                .addGap(0, 0, 0)
+                                .addComponent(Update)))
+                        .addGap(0, 50, Short.MAX_VALUE))))
+            .addComponent(jSeparator1)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,18 +298,28 @@ public class Pendaftaran extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(alamat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addGap(9, 9, 9)
+                .addComponent(Submit)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Delete)
+                    .addComponent(jLabel3)
+                    .addComponent(DBase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Update)
-                    .addComponent(Submit))
-                .addGap(18, 18, 18))
+                    .addComponent(Delete)
+                    .addComponent(Delete1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(outputFind)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        jButton1.setText("Kembali");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Kembali.setText("Kembali");
+        Kembali.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                KembaliActionPerformed(evt);
             }
         });
 
@@ -291,23 +334,23 @@ public class Pendaftaran extends javax.swing.JFrame {
                 .addComponent(MainHead)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 196, Short.MAX_VALUE)
+                .addGap(0, 208, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(Kembali))
                 .addGap(160, 160, 160))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
-                .addComponent(MainHead)
-                .addGap(5, 5, 5)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
+                .addComponent(MainHead)
+                .addGap(0, 0, 0)
+                .addComponent(Kembali)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -319,7 +362,7 @@ public class Pendaftaran extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 573, Short.MAX_VALUE)
         );
 
         pack();
@@ -360,7 +403,7 @@ Connection con;
         String alamat2= alamat.getText();
         try{
             con = con();
-            PreparedStatement pst = con.prepareStatement(String.format("DELETE FROM Pendaftaran WHERE Nama2 ('%s')", nama));
+            PreparedStatement pst = con.prepareStatement(String.format("DELETE FROM Pendaftaran WHERE Nama ('%s')", nama));
             ResultSet rst = pst.executeQuery();
         } catch (ClassNotFoundException ex) {
         } catch (SQLException ex) {
@@ -378,7 +421,7 @@ Connection con;
         String alamat2= alamat.getText();
         try{
             con = con();
-            PreparedStatement pst = con.prepareStatement(String.format("INSERT INTO Pendaftaran (nama, jurusan, email, pass, jk, ttl, alamat) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s')", nama2, jurusan2, email2, pass2, jk2, ttl2, alamat2));
+            PreparedStatement pst = con.prepareStatement(String.format("INSERT INTO Pendaftaran (Nama, Program_Studi, Email, Password, Jenis_Kelamin, Tanggal_Lahir, Alamat) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s')", nama2, jurusan2, email2, pass2, jk2, ttl2, alamat2));
             ResultSet rst = pst.executeQuery();
         } catch (ClassNotFoundException ex) {
         } catch (SQLException ex) {
@@ -396,17 +439,59 @@ Connection con;
         String alamat2= alamat.getText();
         try{
             con = con();
-            PreparedStatement pst = con.prepareStatement(String.format("UPDATE Pendaftaran SET  nama = '%s', jurusan = '%s', email = '%s', pass = '%s', jk = '%s', ttl = '%s', alamat = '%s' WHERE nama2 = '%s' ",  jurusan2, email2, pass2, jk2, ttl2, alamat2));
+            PreparedStatement pst = con.prepareStatement(String.format("UPDATE Pendaftaran SET  Nama = '%s', Program_Studi = '%s', Email = '%s', Password = '%s', Jenis_Kelamin = '%s', Tanggal_Lahir = '%s', Alamat = '%s' WHERE Nama = '%s' ",  jurusan2, email2, pass2, jk2, ttl2, alamat2));
             ResultSet rst = pst.executeQuery();
         } catch (ClassNotFoundException ex) {
         } catch (SQLException ex) {
         }          // TODO add your handling code here:
     }//GEN-LAST:event_UpdateActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void KembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KembaliActionPerformed
         // TODO add your handling code here://
+        new Home().setVisible(true); 
         dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_KembaliActionPerformed
+
+    private void Delete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Delete1ActionPerformed
+        // TODO add your handling code here:
+        Connection con;
+        String nama2 = nama.getText();
+        String jurusan2= jurusan.getText();
+        String email2= email.getText();
+        String pass2= pass.getText();
+        String jk2= jk.getText();
+        String ttl2= ttl.getText();
+        String alamat2= alamat.getText();
+        String database= DBase.getText();
+        try{
+            con = con();
+            PreparedStatement pst = con.prepareStatement(String.format("SELECT * FROM Pendaftaran WHERE Nama = '%s'", database));
+            ResultSet rst = pst.executeQuery();
+             while(rst.next()){
+                String namaDB = rst.getString("Nama");
+                String jurusanDB = rst.getString("Jurusan");
+                String emailDB = rst.getString("Email");
+                String passwordDB = rst.getString("Password");
+                String jeniskelaminDB = rst.getString("JenisKelamin");
+                String tanggallahirDB = rst.getString("TanggalLahir");
+                String alamatDB = rst.getString("Alamat");
+                
+                if(namaDB.equals(database)){
+                    outputFind.setText(namaDB + "/" + jurusanDB + "/" + emailDB + "/" + passwordDB + "/" + jeniskelaminDB + "/" + tanggallahirDB + "/" + alamatDB);
+                    break;
+                } else {
+                    outputFind.setText("Failed to Find Data!");
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+        } catch (SQLException ex) {
+        }          // TODO add your
+        
+    }//GEN-LAST:event_Delete1ActionPerformed
+
+    private void DBaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DBaseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DBaseActionPerformed
 
     /**
      * @param args the command line arguments
@@ -435,7 +520,22 @@ Connection con;
         }
         //</editor-fold>
         //</editor-fold>
-
+ try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Pendaftaran.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Pendaftaran.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Pendaftaran.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Pendaftaran.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -446,16 +546,19 @@ Connection con;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CR;
+    private javax.swing.JTextField DBase;
     private javax.swing.JButton Delete;
+    private javax.swing.JButton Delete1;
     private javax.swing.JLabel Header;
+    private javax.swing.JButton Kembali;
     private javax.swing.JLabel MainHead;
     private javax.swing.JButton Submit;
     private javax.swing.JButton Update;
     private javax.swing.JTextField alamat;
     private javax.swing.JTextField email;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -467,9 +570,11 @@ Connection con;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollBar jScrollBar1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jk;
     private javax.swing.JTextField jurusan;
     private javax.swing.JTextField nama;
+    private javax.swing.JLabel outputFind;
     private javax.swing.JTextField pass;
     private javax.swing.JTextField ttl;
     // End of variables declaration//GEN-END:variables
